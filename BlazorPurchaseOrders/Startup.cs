@@ -39,6 +39,8 @@ namespace BlazorPurchaseOrders
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<WeatherForecastService>();
+            var sqlConnectionConfiguration = new SqlConnectionConfiguration(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddSingleton(sqlConnectionConfiguration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
